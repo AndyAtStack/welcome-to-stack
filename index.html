@@ -4,9 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Stack</title>
+    <style>
+        /* Body styles */
+        body {
+            margin: 0;
+            height: 100vh; /* Ensure full screen height */
+            display: flex; /* Use flexbox */
+            justify-content: center; /* Center the text horizontally */
+            align-items: center; /* Center the text vertically */
+            font-family: Arial, sans-serif; /* Optional: style the text */
+        }
+
+        /* Container for the image and text */
+        .container {
+            display: flex; /* Align children horizontally */
+            align-items: center; /* Vertically center image and text */
+        }
+
+        /* Image styles */
+        img {
+            position: absolute; /* Make the image float at the top-left corner */
+            top: 0;
+            left: 0;
+            width: 100px; /* Adjust size */
+            height: auto;
+        }
+
+        /* Text styles */
+        h1 {
+            margin: 0; /* Remove default margin */
+            padding-left: 120px; /* Add space for image */
+            text-align: center; /* Center the text */
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Stack</h1>
-    <img src="Stack Stones.png" alt="Welcome Image" width="100">
+    <div class="container">
+        <h1>Welcome to Stack</h1>
+    </div>
+
+    <!-- The image -->
+    <img src="Stack Stones.png" alt="Welcome Image">
 </body>
 </html>
