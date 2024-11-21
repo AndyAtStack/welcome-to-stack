@@ -107,6 +107,27 @@
     </script>
  pip install requests requests_oauthlib
 
+ import requests
+from requests_oauthlib import OAuth2Session
+import webbrowser
+
+# AwardWallet OAuth details
+CLIENT_ID = '23fba1273af363d6deab635afc188e80d4f4465a'  # Your client ID
+CLIENT_SECRET = 'your_client_secret'  # You would have this from AwardWallet (hidden for security)
+REDIRECT_URI = 'https://andyatstack.github.io/welcome-to-stack/'  # The URI that AwardWallet redirects after login
+AUTHORIZATION_URL = 'https://business.awardwallet.com/api/oauth/authorize'
+SCOPE = 'read'  # Define the scope of data you need access to, it may vary
+
+# OAuth 2.0 Setup
+oauth = OAuth2Session(CLIENT_ID, redirect_uri=REDIRECT_URI, scope=SCOPE)
+
+# Step 1: Get the authorization URL where the user can approve the app
+authorization_url, state = oauth.authorization_url(AUTHORIZATION_URL)
+
+# Step 2: Direct the user to the authorization URL
+print(f"Please go to this URL and authorize access: {authorization_url}")
+webbrowser.open(authorization_url)  # Opens the authorization URL in the default web browser
+   
 
 </body>
 </html>
