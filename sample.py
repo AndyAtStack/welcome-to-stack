@@ -9,7 +9,7 @@ REDIRECT_URI = 'https://andyatstack.github.io/welcome-to-stack/'  # Your registe
 SCOPE = 'read'  # Replace with the actual scope if needed
 AUTHORIZATION_URL = 'https://business.awardwallet.com/api/oauth/authorize'
 TOKEN_URL = 'https://business.awardwallet.com/api/oauth/token'
-API_ENDPOINT = 'https://business.awardwallet.com/api/some_endpoint'  # Replace with the actual API endpoint you want to access
+API_ENDPOINT = 'https://business.awardwallet.com/api/provider/list'  # Replace with the actual API endpoint you want to access
 
 # 2. Set up OAuth2Session
 oauth = OAuth2Session(CLIENT_ID, redirect_uri=REDIRECT_URI, scope=SCOPE)
