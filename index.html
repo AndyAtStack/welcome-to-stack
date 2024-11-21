@@ -10,40 +10,31 @@
             margin: 0;
             height: 100vh; /* Ensure full screen height */
             display: flex; /* Use flexbox */
-            justify-content: center; /* Center the text horizontally */
-        
+            justify-content: center; /* Center the content horizontally */
+            align-items: center; /* Center the content vertically */
+            flex-direction: column; /* Stack the children (image and text) vertically */
             font-family: Arial, sans-serif; /* Optional: style the text */
-        }
-
-        /* Container for the image and text */
-        .container {
-            display: flex; /* Align children horizontally*/
-            align-items: center; /* Vertically center image and text */
         }
 
         /* Image styles */
         img {
-            position: absolute; /* Make the image float at the top-left corner */
-            top: 5;
-            left: 5;
-            width: 100px; /* Adjust size */
+            width: 100px; /* Adjust the image size */
             height: auto;
         }
 
         /* Text styles */
         h1 {
-            margin: 0; /* Remove default margin */
-            padding-left: 120px; /* Add space for image */
+            margin-top: 20px; /* Space between image and text */
             text-align: center; /* Center the text */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Stack!</h1>
-    </div>
+    <!-- Image -->
+    <img src="Stack Stones.jpg" alt="Welcome Image">
 
-    <!-- The image -->
-    <img src="Stack Stones.png" alt="Welcome Image">
+    <!-- Text -->
+    <h1>Welcome to Stack</h1>
 </body>
 </html>
+
