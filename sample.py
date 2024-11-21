@@ -3,8 +3,8 @@ from requests_oauthlib import OAuth2Session
 import webbrowser
 
 # 1. Your AwardWallet API credentials (replace these with your actual credentials)
-CLIENT_ID = '23fba1273af363d6deab635afc188e80d4f4465a'  # Your client ID
-CLIENT_SECRET = 'your_client_secret'  # Replace with your actual client secret
+CLIENT_ID = sails  # Your client ID
+CLIENT_SECRET = R7dxaLfza67cYdvqaUZ2ihR8XkmnM  # Replace with your actual client secret
 REDIRECT_URI = 'https://andyatstack.github.io/welcome-to-stack/'  # Your registered redirect URI
 SCOPE = 'read'  # Replace with the actual scope if needed
 AUTHORIZATION_URL = 'https://business.awardwallet.com/api/oauth/authorize'
