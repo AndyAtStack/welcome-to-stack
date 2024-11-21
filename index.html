@@ -1,45 +1,31 @@
-# awardwallet_oauth.py
-
-"Welcome to Stack"
 import requests
-from requests_oauthlib import OAuth2Session
-import webbrowser
 
-# AwardWallet OAuth details (provided by AwardWallet)
-CLIENT_ID = '23fba1273af363d6deab635afc188e80d4f4465a'  # Your client ID
-CLIENT_SECRET = 'your_client_secret'  # Your client secret (replace with actual value from AwardWallet)
-REDIRECT_URI = 'https://andyatstack.github.io/welcome-to-stack/'  # Your redirect URI, registered with AwardWallet
-SCOPE = 'read'  # You can adjust the scope depending on the permissions you need, for example: 'read', 'write'
-AUTHORIZATION_URL = 'https://business.awardwallet.com/api/oauth/authorize'
-TOKEN_URL = 'https://business.awardwallet.com/api/oauth/token'
-API_ENDPOINT = 'https://business.awardwallet.com/api/some_endpoint'  # Replace with the actual API endpoint you want to use
+# Your API credentials (after you contact AwardWallet)
+api_username = 'SAILS'  # Replace with your actual username
+api_password = 'R7dxaLfza67cYdvqaUZ2ihR8XkmnM'  # Replace with your actual password
 
-# Step 1: Create OAuth2Session object
-# Create an OAuth2Session instance with your client ID, the redirect URI, and the desired scope
-oauth = OAuth2Session(CLIENT_ID, redirect_uri=REDIRECT_URI, scope=SCOPE)
+# Concatenate the username and password with a colon
+auth_token = f"{api_username}:{api_password}"
 
-# Step 2: Generate the authorization URL and print it for the user to visit
-authorization_url, state = oauth.authorization_url(AUTHORIZATION_URL)
+# Make sure the authentication token is in base64 format
+import base64
+auth_token_base64 = base64.b64encode(auth_token.encode()).decode()
 
-# Step 3: Direct the user to the authorization URL for them to log in and authorize your app
-print(f"Please go to this URL and authorize access: {authorization_url}")
-webbrowser.open(authorization_url)  # Open the URL automatically in the default browser
+# The API endpoint you want to call
+API_ENDPOINT = 'https://business.awardwallet.com/api/some_endpoint'  # Replace with actual endpoint
 
-# Step 4: After user authorizes, they will be redirected back to your REDIRECT_URI with a 'code' parameter in the URL
-# You need to capture this redirect URL manually or programmatically. For now, we ask the user to input the full URL here.
-redirect_response = input("Paste the full redirect URL here: ")
+# Set up the headers with the 'X-Authentication' field
+headers = {
+    'X-Authentication': auth_token_base64  # Pass the base64 encoded token here
+}
 
-# Step 5: Exchange the authorization code for an access token
-# The code in the redirect URL will be exchanged for an access token.
-oauth.fetch_token(TOKEN_URL, authorization_response=redirect_response, client_secret=CLIENT_SECRET)
+# Make the GET request with the authentication header
+response = requests.get(API_ENDPOINT, headers=headers)
 
-# Step 6: Now you can use the access token to make authorized API requests
-response = oauth.get(API_ENDPOINT)
-
-# Step 7: Check the response and handle it
+# Check the response
 if response.status_code == 200:
     print("Data fetched successfully.")
-    print(response.json())  # Print the data returned from the API in JSON format
+    print(response.json())  # Print the response JSON
 else:
     print(f"Failed to fetch data. Status code: {response.status_code}")
-    print(response.text)  # Print any error message returned by the API
+    print(response.text)  # Print the error message
